@@ -29,9 +29,9 @@ const steps = [
 ];
 
 const testimonials = [
-  { name: 'Aisha T.', role: 'Product Manager → Director', text: "Patheora didn't just help me find a new job — it helped me understand who I am professionally. The AI report was eye-opening.", rating: 5 },
+  { name: 'Aisha T.', role: 'Product Manager → Director', text: "Propela didn't just help me find a new job — it helped me understand who I am professionally. The AI report was eye-opening.", rating: 5 },
   { name: 'James O.', role: 'Engineer → Startup Founder', text: 'The coaching marketplace connected me with someone who had walked my exact path. Three months later, I launched my startup.', rating: 5 },
-  { name: 'Priya M.', role: 'Academia → Tech Industry', text: "Patheora gave me the clarity and confidence I needed. Best investment I've made.", rating: 5 },
+  { name: 'Priya M.', role: 'Academia → Tech Industry', text: "Propela gave me the clarity and confidence I needed. Best investment I've made.", rating: 5 },
 ];
 
 function Stars({ count }) {
@@ -135,7 +135,7 @@ export default function LandingPage() {
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText('https://patheora.com?ref=' + (waitlistPosition || 'early-access'));
+    navigator.clipboard.writeText('https://propela.com?ref=' + (waitlistPosition || 'early-access'));
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
   };
@@ -172,7 +172,7 @@ export default function LandingPage() {
             color: 'var(--white)', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 18
           }}>S</div>
           <div>
-            <div style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 15, lineHeight: 1.1, color: 'var(--neutral-800)' }}>SEAS Patheora</div>
+            <div style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 15, lineHeight: 1.1, color: 'var(--neutral-800)' }}>SEAS Propela</div>
             <div style={{ fontSize: 11, color: 'var(--neutral-400)' }}>Career Clinic</div>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function LandingPage() {
             Your Handy Career Clinic
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 'var(--text-lg)', lineHeight: 1.8, marginBottom: 'var(--space-10)', maxWidth: 540, margin: '0 auto var(--space-10)' }}>
-            Navigating the future of work doesn't have to be lonely. Patheora combines AI-powered career intelligence with human coaching expertise.
+            Navigating the future of work doesn't have to be lonely. Propela combines AI-powered career intelligence with human coaching expertise.
           </p>
           <div className="flex items-center justify-center gap-4">
             <a href="#join-waitlist" onClick={scrollToWaitlist} className="btn btn-inverted btn-lg">
@@ -277,7 +277,7 @@ export default function LandingPage() {
       <section style={{ background: 'var(--white)', padding: '80px var(--space-8)' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-12)' }}>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 400 }}>How Patheora works</h2>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 400 }}>How Propela works</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-8)' }}>
             {steps.map((step, i) => (
@@ -357,7 +357,7 @@ export default function LandingPage() {
               Join the <em>Exclusive</em> Waitlist
             </h2>
             <p style={{ color: 'var(--neutral-600)', fontSize: 'var(--text-base)', maxWidth: 580, margin: '0 auto' }}>
-              Secure your early access to Patheora. Be the first to try our AI Career Assessment and match with top career coaches at launch.
+              Secure your early access to Propela. Be the first to try our AI Career Assessment and match with top career coaches at launch.
             </p>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 'var(--space-4)', background: 'var(--white)', padding: '6px 16px', borderRadius: 'var(--radius-full)', boxShadow: 'var(--shadow-sm)', fontSize: 13, border: '1px solid var(--neutral-100)' }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tertiary)', display: 'inline-block' }} className="pulse" />
@@ -419,7 +419,7 @@ export default function LandingPage() {
                   <div style={{ display: 'flex', gap: 'var(--space-2)', maxWidth: 440, margin: '0 auto' }}>
                     <input
                       readOnly
-                      value={`https://patheora.com?ref=${waitlistPosition}`}
+                      value={`https://propela.com?ref=${waitlistPosition}`}
                       style={{
                         padding: '0.5rem 0.75rem',
                         border: '1.5px solid var(--neutral-200)',
@@ -443,7 +443,7 @@ export default function LandingPage() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 'var(--space-4)' }}>
                     <a
-                      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I just joined the waitlist for Patheora - the AI career assessment and coaching clinic! Spot #${waitlistPosition}. Join me here: https://patheora.com?ref=${waitlistPosition}`)}`}
+                      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I just joined the waitlist for Propela - the AI career assessment and coaching clinic! Spot #${waitlistPosition}. Join me here: https://propela.com?ref=${waitlistPosition}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-ghost btn-sm"
@@ -452,7 +452,7 @@ export default function LandingPage() {
                       Share on X
                     </a>
                     <a
-                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://patheora.com?ref=${waitlistPosition}`)}`}
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://propela.com?ref=${waitlistPosition}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-ghost btn-sm"
@@ -699,7 +699,7 @@ export default function LandingPage() {
           Ready to own your career?
         </h2>
         <p style={{ color: 'rgba(255,255,255,0.75)', marginBottom: 'var(--space-8)', maxWidth: 480, margin: '0 auto var(--space-8)' }}>
-          Join thousands of professionals who've found clarity, confidence, and career momentum with Patheora.
+          Join thousands of professionals who've found clarity, confidence, and career momentum with Propela.
         </p>
         <div className="flex items-center justify-center gap-4">
           <a href="#join-waitlist" onClick={scrollToWaitlist} className="btn btn-inverted btn-lg">
@@ -714,13 +714,13 @@ export default function LandingPage() {
       {/* Footer */}
       <footer style={{ background: 'var(--neutral-800)', padding: 'var(--space-10) var(--space-8)', color: 'rgba(255,255,255,0.6)', fontSize: 'var(--text-sm)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
-          <div style={{ fontFamily: 'var(--font-serif)', color: 'var(--white)', fontSize: 'var(--text-lg)' }}>SEAS Patheora Career Clinic</div>
+          <div style={{ fontFamily: 'var(--font-serif)', color: 'var(--white)', fontSize: 'var(--text-lg)' }}>SEAS Propela Career Clinic</div>
           <div style={{ display: 'flex', gap: 'var(--space-6)' }}>
             {['Privacy', 'Terms', 'Contact', 'Careers'].map(item => (
               <a key={item} href="#" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{item}</a>
             ))}
           </div>
-          <div>© 2026 SEAS Patheora. All rights reserved.</div>
+          <div>© 2026 SEAS Propela. All rights reserved.</div>
         </div>
       </footer>
     </div>
