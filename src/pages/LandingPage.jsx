@@ -5,6 +5,7 @@ import {
   MessageCircle, Award, BookOpen, TrendingUp, Briefcase, Menu, X,
   Copy, Share2, Loader2, Sparkles, Check
 } from 'lucide-react';
+import { supabase } from '../supabaseClient';
 
 const coaches = [
   { name: 'Elena Ramos', title: 'Executive Career Coach', rating: 4.9, reviews: 142, specialty: 'Leadership', color: '#9BAF9B' },
@@ -62,23 +63,25 @@ export default function LandingPage() {
   const [waitlistPosition, setWaitlistPosition] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
   React.useEffect(() => {
-    fetch(`${API_BASE_URL}/leads/count`)
-      .then(res => {
-        if (res.ok) return res.json();
-        throw new Error();
-      })
-      .then(count => {
+    const fetchCount = async () => {
+      try {
+        const { count, error } = await supabase
+          .from('leads')
+          .select('*', { count: 'exact', head: true });
+        
+        if (error) throw error;
+        
         if (typeof count === 'number') {
           setWaitlistCount(148 + count);
         }
-      })
-      .catch(() => {
+      } catch (err) {
+        console.error('Error fetching waitlist count:', err);
         setWaitlistCount(152);
-      });
-  }, [API_BASE_URL]);
+      }
+    };
+    fetchCount();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -108,25 +111,40 @@ export default function LandingPage() {
     setErrorMessage('');
 
     try {
-      const response = await fetch(`${API_BASE_URL}/leads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // First check if email already exists
+      const { data: existingLead } = await supabase
+        .from('leads')
+        .select('id')
+        .ilike('email', formData.email.trim())
+        .maybeSingle();
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setWaitlistPosition(data.position || waitlistCount + 1);
-        setWaitlistCount(prev => prev + 1);
-      } else {
+      if (existingLead) {
         setSubmitStatus('error');
-        setErrorMessage(data.message || 'Something went wrong. Please try again.');
+        setErrorMessage('This email is already registered on our waitlist.');
+        setSubmitting(false);
+        return;
       }
+
+      // Insert new lead
+      const { error } = await supabase
+        .from('leads')
+        .insert([{
+          fullName: formData.fullName.trim(),
+          email: formData.email.trim(),
+          currentRole: formData.currentRole,
+          primaryInterest: formData.primaryInterest,
+          referralSource: formData.referralSource,
+          message: formData.message,
+          consent: formData.consent
+        }]);
+
+      if (error) throw error;
+
+      setSubmitStatus('success');
+      setWaitlistPosition(waitlistCount + 1);
+      setWaitlistCount(prev => prev + 1);
     } catch (error) {
+      console.error('Submission error:', error);
       setSubmitStatus('error');
       setErrorMessage('Could not connect to the waitlist server. Please try again later.');
     } finally {
